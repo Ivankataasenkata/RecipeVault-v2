@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RecipeVault.Data;
+using RecipeVault.Services;
+using RecipeVault.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IRecipeService, RecipeService>();
 
 var app = builder.Build();
 
