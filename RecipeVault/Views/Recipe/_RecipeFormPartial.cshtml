@@ -1,0 +1,57 @@
+@model RecipeVault.ViewModels.Recipe.RecipeFormViewModel
+
+<div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+<div class="mb-3">
+    <label asp-for="Title" class="form-label"></label>
+    <input asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Instructions" class="form-label"></label>
+    <textarea asp-for="Instructions" class="form-control" rows="6"></textarea>
+    <span asp-validation-for="Instructions" class="text-danger"></span>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <label asp-for="PrepTimeMinutes" class="form-label"></label>
+        <input asp-for="PrepTimeMinutes" class="form-control" />
+        <span asp-validation-for="PrepTimeMinutes" class="text-danger"></span>
+    </div>
+    <div class="col-md-4 mb-3">
+        <label asp-for="Servings" class="form-label"></label>
+        <input asp-for="Servings" class="form-control" />
+        <span asp-validation-for="Servings" class="text-danger"></span>
+    </div>
+    <div class="col-md-4 mb-3">
+        <label asp-for="Difficulty" class="form-label"></label>
+        <select asp-for="Difficulty" asp-items="Html.GetEnumSelectList<RecipeVault.Models.Difficulty>()" class="form-select"></select>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label asp-for="CuisineId" class="form-label"></label>
+    <select asp-for="CuisineId" class="form-select">
+        <option value="">-- select a cuisine --</option>
+        @foreach (var cuisine in Model.Cuisines)
+        {
+            <option value="@cuisine.Id">@cuisine.Name</option>
+        }
+    </select>
+    <span asp-validation-for="CuisineId" class="text-danger"></span>
+</div>
+
+<div class="mb-3">
+    <label asp-for="ImageUrl" class="form-label"></label>
+    <input asp-for="ImageUrl" class="form-control" />
+    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+</div>
+

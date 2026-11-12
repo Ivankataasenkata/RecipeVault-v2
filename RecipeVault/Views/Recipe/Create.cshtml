@@ -1,0 +1,20 @@
+@model RecipeVault.ViewModels.Recipe.RecipeFormViewModel
+@{
+    ViewData["Title"] = "Add Recipe";
+}
+
+<h1>Add Recipe</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create" method="post">
+            <partial name="_RecipeFormPartial" model="Model" />
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

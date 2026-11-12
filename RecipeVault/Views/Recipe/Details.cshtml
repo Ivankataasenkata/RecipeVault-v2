@@ -1,0 +1,46 @@
+@model RecipeVault.ViewModels.Recipe.RecipeDetailsViewModel
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="row">
+    <div class="col-md-5">
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid rounded shadow" />
+        }
+    </div>
+    <div class="col-md-7">
+        <h1>@Model.Title</h1>
+        <p>
+            <span class="badge bg-secondary">@Model.CuisineName</span>
+            <span class="badge bg-info text-dark">@Model.Difficulty</span>
+            <span class="badge bg-light text-dark">@Model.PrepTimeMinutes min</span>
+            <span class="badge bg-light text-dark">@Model.Servings servings</span>
+        </p>
+        <p class="lead">@Model.Description</p>
+        <p class="text-muted">Added on @Model.CreatedOn.ToString("d MMM yyyy")</p>
+
+        <h4>Ingredients</h4>
+        @if (Model.Ingredients.Any())
+        {
+            <ul>
+                @foreach (var ingredient in Model.Ingredients)
+                {
+                    <li>@ingredient</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="text-muted">No ingredients listed yet.</p>
+        }
+
+        <h4>Instructions</h4>
+        <p style="white-space: pre-line;">@Model.Instructions</p>
+
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to all</a>
+    </div>
+</div>

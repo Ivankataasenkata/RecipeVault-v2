@@ -1,0 +1,12 @@
+@model RecipeVault.ViewModels.Recipe.RecipeDetailsViewModel
+@{
+    ViewData["Title"] = "Delete Recipe";
+}
+
+<h1 class="text-danger">Delete recipe?</h1>
+<p>Are you sure you want to permanently delete <strong>@Model.Title</strong> (@Model.CuisineName)?</p>
+
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+    <button type="submit" class="btn btn-danger">Yes, delete it</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
