@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Microsoft.EntityFrameworkCore;
 using RecipeVault.Models;
 
@@ -16,6 +17,14 @@ namespace RecipeVault.Data
 
         public DbSet<RecipeIngredient> RecipeIngredients {get; set;} = null!;
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<RecipeIngredient>()
+                .HasKey(ri => new {ri.RecipeId, ri.IngredientId}); 
+        }
 
     }
 }
