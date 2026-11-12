@@ -16,5 +16,8 @@ namespace RecipeVault.Services.Interfaces
         Task<bool> EditAsync (int id, RecipeFormViewModel  model);
 
         Task<bool> DeleteAsync(int id);
+
+        Task<ICollection<CuisineDropdownViewModel>> GetCuisinesAsync();
+
     }
 }

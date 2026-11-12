@@ -144,7 +144,7 @@ namespace RecipeVault.Services
             return true;
         }
 
-        private async Task<ICollection<CuisineDropdownViewModel>> GetCuisinesAsync()
+        public async Task<ICollection<CuisineDropdownViewModel>> GetCuisinesAsync()
         {
             return await dbContext.Cuisines
                 .AsNoTracking()
