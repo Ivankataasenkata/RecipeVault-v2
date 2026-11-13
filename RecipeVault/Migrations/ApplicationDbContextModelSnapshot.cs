@@ -131,6 +131,36 @@ namespace RecipeVault.Migrations
                         {
                             Id = 10,
                             Name = "Garlic"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Mushrooms"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Butter"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Onion"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "White wine"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Duck"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "Honey"
                         });
                 });
 
@@ -221,6 +251,32 @@ namespace RecipeVault.Migrations
                             PrepTimeMinutes = 30,
                             Servings = 2,
                             Title = "Chicken Fried Rice"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedOn = new DateTime(2026, 11, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CuisineId = 1,
+                            Description = "Creamy Italian risotto that demands patience: constant stirring, good stock and a generous knob of butter.",
+                            Difficulty = 2,
+                            ImageUrl = "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=800",
+                            Instructions = "Soften the chopped onion and garlic in butter.\nAdd the rice and toast for two minutes.\nDeglaze with white wine.\nAdd hot stock one ladle at a time, stirring until absorbed before the next.\nFry the mushrooms separately and fold them in.\nFinish off the heat with butter and parmesan. Rest two minutes and serve.",
+                            PrepTimeMinutes = 50,
+                            Servings = 4,
+                            Title = "Mushroom Risotto"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedOn = new DateTime(2026, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CuisineId = 3,
+                            Description = "The famous Chinese showpiece: lacquered crispy skin achieved through drying, glazing and careful roasting.",
+                            Difficulty = 2,
+                            ImageUrl = "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800",
+                            Instructions = "Clean the duck and pat it completely dry.\nBlanch the skin with boiling water, then dry again.\nBrush with the honey and soy glaze.\nLet the duck air-dry in the fridge overnight.\nRoast at high heat, glazing twice more, until the skin is deep mahogany and crisp.\nRest, carve thinly and serve with pancakes.",
+                            PrepTimeMinutes = 180,
+                            Servings = 6,
+                            Title = "Peking Duck"
                         });
                 });
 
@@ -309,6 +365,72 @@ namespace RecipeVault.Migrations
                             RecipeId = 3,
                             IngredientId = 10,
                             Quantity = "2 cloves"
+                        },
+                        new
+                        {
+                            RecipeId = 4,
+                            IngredientId = 7,
+                            Quantity = "320 g"
+                        },
+                        new
+                        {
+                            RecipeId = 4,
+                            IngredientId = 11,
+                            Quantity = "250 g"
+                        },
+                        new
+                        {
+                            RecipeId = 4,
+                            IngredientId = 12,
+                            Quantity = "60 g"
+                        },
+                        new
+                        {
+                            RecipeId = 4,
+                            IngredientId = 13,
+                            Quantity = "1"
+                        },
+                        new
+                        {
+                            RecipeId = 4,
+                            IngredientId = 14,
+                            Quantity = "100 ml"
+                        },
+                        new
+                        {
+                            RecipeId = 4,
+                            IngredientId = 4,
+                            Quantity = "80 g"
+                        },
+                        new
+                        {
+                            RecipeId = 4,
+                            IngredientId = 10,
+                            Quantity = "2 cloves"
+                        },
+                        new
+                        {
+                            RecipeId = 5,
+                            IngredientId = 15,
+                            Quantity = "1 whole"
+                        },
+                        new
+                        {
+                            RecipeId = 5,
+                            IngredientId = 16,
+                            Quantity = "4 tbsp"
+                        },
+                        new
+                        {
+                            RecipeId = 5,
+                            IngredientId = 9,
+                            Quantity = "3 tbsp"
+                        },
+                        new
+                        {
+                            RecipeId = 5,
+                            IngredientId = 10,
+                            Quantity = "3 cloves"
                         });
                 });
 

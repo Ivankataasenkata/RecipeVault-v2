@@ -43,7 +43,13 @@ namespace RecipeVault.Data
                 new Ingredient { Id = 7, Name = "Rice" },
                 new Ingredient { Id = 8, Name = "Chicken" },
                 new Ingredient { Id = 9, Name = "Soy sauce" },
-                new Ingredient { Id = 10, Name = "Garlic" }
+                new Ingredient { Id = 10, Name = "Garlic" },
+                new Ingredient { Id = 11, Name = "Mushrooms" },
+                new Ingredient { Id = 12, Name = "Butter" },
+                new Ingredient { Id = 13, Name = "Onion" },
+                new Ingredient { Id = 14, Name = "White wine" },
+                new Ingredient { Id = 15, Name = "Duck" },
+                new Ingredient { Id = 16, Name = "Honey" }
             );
 
             modelBuilder.Entity<Recipe>().HasData(
@@ -86,6 +92,32 @@ namespace RecipeVault.Data
                     ImageUrl = "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800",
                     CreatedOn = new DateTime(2026, 11, 3),
                     CuisineId = 3
+                },
+                new Recipe
+                {
+                    Id = 4,
+                    Title = "Mushroom Risotto",
+                    Description = "Creamy Italian risotto that demands patience: constant stirring, good stock and a generous knob of butter.",
+                    Instructions = "Soften the chopped onion and garlic in butter.\nAdd the rice and toast for two minutes.\nDeglaze with white wine.\nAdd hot stock one ladle at a time, stirring until absorbed before the next.\nFry the mushrooms separately and fold them in.\nFinish off the heat with butter and parmesan. Rest two minutes and serve.",
+                    PrepTimeMinutes = 50,
+                    Servings = 4,
+                    Difficulty = Difficulty.Hard,
+                    ImageUrl = "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=800",
+                    CreatedOn = new DateTime(2026, 11, 4),
+                    CuisineId = 1
+                },
+                new Recipe
+                {
+                    Id = 5,
+                    Title = "Peking Duck",
+                    Description = "The famous Chinese showpiece: lacquered crispy skin achieved through drying, glazing and careful roasting.",
+                    Instructions = "Clean the duck and pat it completely dry.\nBlanch the skin with boiling water, then dry again.\nBrush with the honey and soy glaze.\nLet the duck air-dry in the fridge overnight.\nRoast at high heat, glazing twice more, until the skin is deep mahogany and crisp.\nRest, carve thinly and serve with pancakes.",
+                    PrepTimeMinutes = 180,
+                    Servings = 6,
+                    Difficulty = Difficulty.Hard,
+                    ImageUrl = "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800",
+                    CreatedOn = new DateTime(2026, 11, 5),
+                    CuisineId = 3
                 }
             );
 
@@ -100,7 +132,18 @@ namespace RecipeVault.Data
                 new RecipeIngredient { RecipeId = 3, IngredientId = 7, Quantity = "300 g" },
                 new RecipeIngredient { RecipeId = 3, IngredientId = 8, Quantity = "250 g" },
                 new RecipeIngredient { RecipeId = 3, IngredientId = 9, Quantity = "3 tbsp" },
-                new RecipeIngredient { RecipeId = 3, IngredientId = 10, Quantity = "2 cloves" }
+                new RecipeIngredient { RecipeId = 3, IngredientId = 10, Quantity = "2 cloves" },
+                new RecipeIngredient { RecipeId = 4, IngredientId = 7, Quantity = "320 g" },
+                new RecipeIngredient { RecipeId = 4, IngredientId = 11, Quantity = "250 g" },
+                new RecipeIngredient { RecipeId = 4, IngredientId = 12, Quantity = "60 g" },
+                new RecipeIngredient { RecipeId = 4, IngredientId = 13, Quantity = "1" },
+                new RecipeIngredient { RecipeId = 4, IngredientId = 14, Quantity = "100 ml" },
+                new RecipeIngredient { RecipeId = 4, IngredientId = 4, Quantity = "80 g" },
+                new RecipeIngredient { RecipeId = 4, IngredientId = 10, Quantity = "2 cloves" },
+                new RecipeIngredient { RecipeId = 5, IngredientId = 15, Quantity = "1 whole" },
+                new RecipeIngredient { RecipeId = 5, IngredientId = 16, Quantity = "4 tbsp" },
+                new RecipeIngredient { RecipeId = 5, IngredientId = 9, Quantity = "3 tbsp" },
+                new RecipeIngredient { RecipeId = 5, IngredientId = 10, Quantity = "3 cloves" }
             );
         }
 
