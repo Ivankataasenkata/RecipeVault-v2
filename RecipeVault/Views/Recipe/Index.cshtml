@@ -24,40 +24,8 @@
 <div class="row g-4">
     @foreach (var recipe in Model)
     {
-        var difficultyClass = recipe.Difficulty switch
-        {
-            "Easy" => "text-bg-success",
-            "Medium" => "text-bg-warning",
-            "Hard" => "text-bg-danger",
-            _ => "text-bg-secondary"
-        };
-
         <div class="col-sm-6 col-lg-4">
-            <div class="card h-100 recipe-card">
-                <div class="recipe-img-wrap">
-                    @if (!string.IsNullOrEmpty(recipe.ImageUrl))
-                    {
-                        <img src="@recipe.ImageUrl" class="recipe-img" alt="@recipe.Title" loading="lazy">
-                    }
-                    else
-                    {
-                        <div class="recipe-img-placeholder">🍽️</div>
-                    }
-                    <span class="badge @difficultyClass recipe-difficulty">@recipe.Difficulty</span>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title mb-2">@recipe.Title</h5>
-                    <p class="card-text text-muted small mb-3">
-                        <span class="me-3">🌍 @recipe.CuisineName</span>
-                        <span>⏱ @recipe.PrepTimeMinutes min</span>
-                    </p>
-                    <div class="mt-auto d-flex gap-2">
-                        <a asp-action="Details" asp-route-id="@recipe.Id" class="btn btn-primary btn-sm flex-grow-1">View recipe</a>
-                        <a asp-action="Edit" asp-route-id="@recipe.Id" class="btn btn-outline-secondary btn-sm" title="Edit">✏️</a>
-                        <a asp-action="Delete" asp-route-id="@recipe.Id" class="btn btn-outline-danger btn-sm" title="Delete">🗑</a>
-                    </div>
-                </div>
-            </div>
+            <partial name="_RecipeCardPartial" model="recipe" />
         </div>
     }
 </div>

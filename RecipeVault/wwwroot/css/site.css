@@ -30,6 +30,14 @@ body {
   text-align: start;
 }
 
+/* ---------- Home hero ---------- */
+
+.hero {
+  padding: 4rem 1rem 3rem;
+  border-radius: 1rem;
+  background: linear-gradient(160deg, #f0fdf4, #ecfeff);
+}
+
 /* ---------- Recipe cards ---------- */
 
 .recipe-card {

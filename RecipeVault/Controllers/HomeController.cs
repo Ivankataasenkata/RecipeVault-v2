@@ -1,14 +1,23 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using RecipeVault.Models;
+using RecipeVault.Services.Interfaces;
 
 namespace RecipeVault.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private readonly IRecipeService recipeService;
+
+    public HomeController(IRecipeService recipeService)
     {
-        return View();
+        this.recipeService = recipeService;
+    }
+
+    public async Task<IActionResult> Index()
+    {
+        var latestRecipes = await recipeService.GetLatestAsync(3);
+        return View(latestRecipes);
     }
 
     public IActionResult Privacy()

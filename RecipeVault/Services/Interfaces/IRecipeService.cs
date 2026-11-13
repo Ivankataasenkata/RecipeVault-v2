@@ -5,6 +5,8 @@ namespace RecipeVault.Services.Interfaces
     public interface IRecipeService
     {
         Task<IEnumerable<RecipeAllViewModel>> GetAllAsync();
+
+        Task<IEnumerable<RecipeAllViewModel>> GetLatestAsync(int count);
         Task<RecipeDetailsViewModel?> GetDetailsAsync(int id);
 
         Task<RecipeFormViewModel> GetEmptyFormAsync();

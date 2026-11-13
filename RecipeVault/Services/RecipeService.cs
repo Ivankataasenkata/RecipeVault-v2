@@ -31,6 +31,24 @@ namespace RecipeVault.Services
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<RecipeAllViewModel>> GetLatestAsync(int count)
+        {
+            return await dbContext.Recipes
+                .AsNoTracking()
+                .OrderByDescending(r => r.CreatedOn)   // newest first
+                .Take(count)                           // only the few the home page shows
+                .Select(r => new RecipeAllViewModel
+                {
+                    Id = r.Id,
+                    Title = r.Title,
+                    ImageUrl = r.ImageUrl,
+                    PrepTimeMinutes = r.PrepTimeMinutes,
+                    Difficulty = r.Difficulty.ToString(),
+                    CuisineName = r.Cuisine.Name
+                })
+                .ToListAsync();
+        }
+
         public async Task<RecipeDetailsViewModel?> GetDetailsAsync(int id)
         {
             return await dbContext.Recipes

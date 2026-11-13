@@ -1,8 +1,34 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<RecipeVault.ViewModels.Recipe.RecipeAllViewModel>
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero text-center">
+    <h1 class="display-4 fw-bold">Your recipes, in one vault 🍲</h1>
+    <p class="lead text-muted mx-auto" style="max-width: 560px;">
+        Collect, organize and share the dishes you love — from quick weeknight
+        dinners to weekend experiments.
+    </p>
+    <div class="d-flex gap-2 justify-content-center mt-4">
+        <a asp-controller="Recipe" asp-action="Index" class="btn btn-primary btn-lg">Browse recipes</a>
+        <a asp-controller="Recipe" asp-action="Create" class="btn btn-outline-success btn-lg">+ Add your own</a>
+    </div>
+</section>
+
+@if (Model.Any())
+{
+    <section class="mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h3 mb-0">Latest recipes</h2>
+            <a asp-controller="Recipe" asp-action="Index" class="text-decoration-none">See all →</a>
+        </div>
+        <div class="row g-4">
+            @foreach (var recipe in Model)
+            {
+                <div class="col-sm-6 col-lg-4">
+                    <partial name="_RecipeCardPartial" model="recipe" />
+                </div>
+            }
+        </div>
+    </section>
+}

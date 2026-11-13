@@ -1,0 +1,36 @@
+@model RecipeVault.ViewModels.Recipe.RecipeAllViewModel
+@{
+    var difficultyClass = Model.Difficulty switch
+    {
+        "Easy" => "text-bg-success",
+        "Medium" => "text-bg-warning",
+        "Hard" => "text-bg-danger",
+        _ => "text-bg-secondary"
+    };
+}
+
+<div class="card h-100 recipe-card">
+    <div class="recipe-img-wrap">
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl" class="recipe-img" alt="@Model.Title" loading="lazy">
+        }
+        else
+        {
+            <div class="recipe-img-placeholder">🍽️</div>
+        }
+        <span class="badge @difficultyClass recipe-difficulty">@Model.Difficulty</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title mb-2">@Model.Title</h5>
+        <p class="card-text text-muted small mb-3">
+            <span class="me-3">🌍 @Model.CuisineName</span>
+            <span>⏱ @Model.PrepTimeMinutes min</span>
+        </p>
+        <div class="mt-auto d-flex gap-2">
+            <a asp-controller="Recipe" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary btn-sm flex-grow-1">View recipe</a>
+            <a asp-controller="Recipe" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary btn-sm" title="Edit">✏️</a>
+            <a asp-controller="Recipe" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger btn-sm" title="Delete">🗑</a>
+        </div>
+    </div>
+</div>
