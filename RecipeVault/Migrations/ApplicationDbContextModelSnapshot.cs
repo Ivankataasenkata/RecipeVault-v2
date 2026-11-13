@@ -47,6 +47,44 @@ namespace RecipeVault.Migrations
                         new
                         {
                             Id = 1,
+                            Description = "Pasta, pizza and the Mediterranean classics.",
+                            Name = "Italian"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Traditional Balkan dishes.",
+                            Name = "Bulgarian"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Wok, rice, noodles and bold flavors.",
+                            Name = "Asian"
+                        });
+                });
+
+            modelBuilder.Entity("RecipeVault.Models.Ingredient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ingredients");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
                             Name = "Spaghetti"
                         },
                         new
@@ -94,24 +132,6 @@ namespace RecipeVault.Migrations
                             Id = 10,
                             Name = "Garlic"
                         });
-                });
-
-            modelBuilder.Entity("RecipeVault.Models.Ingredient", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Ingredients");
                 });
 
             modelBuilder.Entity("RecipeVault.Models.Recipe", b =>

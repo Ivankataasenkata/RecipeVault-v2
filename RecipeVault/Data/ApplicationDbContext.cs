@@ -28,6 +28,12 @@ namespace RecipeVault.Data
         private static void SeedData(ModelBuilder  modelBuilder)
         {
             modelBuilder.Entity<Cuisine>().HasData(
+                new Cuisine { Id = 1, Name = "Italian", Description = "Pasta, pizza and the Mediterranean classics." },
+                new Cuisine { Id = 2, Name = "Bulgarian", Description = "Traditional Balkan dishes." },
+                new Cuisine { Id = 3, Name = "Asian", Description = "Wok, rice, noodles and bold flavors." }
+            );
+
+            modelBuilder.Entity<Ingredient>().HasData(
                 new Ingredient { Id = 1, Name = "Spaghetti" },
                 new Ingredient { Id = 2, Name = "Eggs" },
                 new Ingredient { Id = 3, Name = "Bacon" },

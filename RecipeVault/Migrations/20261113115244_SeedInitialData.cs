@@ -18,16 +18,26 @@ namespace RecipeVault.Migrations
                 columns: new[] { "Id", "Description", "Name" },
                 values: new object[,]
                 {
-                    { 1, null, "Spaghetti" },
-                    { 2, null, "Eggs" },
-                    { 3, null, "Bacon" },
-                    { 4, null, "Parmesan" },
-                    { 5, null, "Yogurt" },
-                    { 6, null, "Cucumber" },
-                    { 7, null, "Rice" },
-                    { 8, null, "Chicken" },
-                    { 9, null, "Soy sauce" },
-                    { 10, null, "Garlic" }
+                    { 1, "Pasta, pizza and the Mediterranean classics.", "Italian" },
+                    { 2, "Traditional Balkan dishes.", "Bulgarian" },
+                    { 3, "Wok, rice, noodles and bold flavors.", "Asian" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Ingredients",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Spaghetti" },
+                    { 2, "Eggs" },
+                    { 3, "Bacon" },
+                    { 4, "Parmesan" },
+                    { 5, "Yogurt" },
+                    { 6, "Cucumber" },
+                    { 7, "Rice" },
+                    { 8, "Chicken" },
+                    { 9, "Soy sauce" },
+                    { 10, "Garlic" }
                 });
 
             migrationBuilder.InsertData(
@@ -62,41 +72,6 @@ namespace RecipeVault.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "Cuisines",
-                keyColumn: "Id",
-                keyValue: 4);
-
-            migrationBuilder.DeleteData(
-                table: "Cuisines",
-                keyColumn: "Id",
-                keyValue: 5);
-
-            migrationBuilder.DeleteData(
-                table: "Cuisines",
-                keyColumn: "Id",
-                keyValue: 6);
-
-            migrationBuilder.DeleteData(
-                table: "Cuisines",
-                keyColumn: "Id",
-                keyValue: 7);
-
-            migrationBuilder.DeleteData(
-                table: "Cuisines",
-                keyColumn: "Id",
-                keyValue: 8);
-
-            migrationBuilder.DeleteData(
-                table: "Cuisines",
-                keyColumn: "Id",
-                keyValue: 9);
-
-            migrationBuilder.DeleteData(
-                table: "Cuisines",
-                keyColumn: "Id",
-                keyValue: 10);
-
             migrationBuilder.DeleteData(
                 table: "RecipeIngredients",
                 keyColumns: new[] { "IngredientId", "RecipeId" },
@@ -151,6 +126,56 @@ namespace RecipeVault.Migrations
                 table: "RecipeIngredients",
                 keyColumns: new[] { "IngredientId", "RecipeId" },
                 keyValues: new object[] { 10, 3 });
+
+            migrationBuilder.DeleteData(
+                table: "Ingredients",
+                keyColumn: "Id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Ingredients",
+                keyColumn: "Id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Ingredients",
+                keyColumn: "Id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "Ingredients",
+                keyColumn: "Id",
+                keyValue: 4);
+
+            migrationBuilder.DeleteData(
+                table: "Ingredients",
+                keyColumn: "Id",
+                keyValue: 5);
+
+            migrationBuilder.DeleteData(
+                table: "Ingredients",
+                keyColumn: "Id",
+                keyValue: 6);
+
+            migrationBuilder.DeleteData(
+                table: "Ingredients",
+                keyColumn: "Id",
+                keyValue: 7);
+
+            migrationBuilder.DeleteData(
+                table: "Ingredients",
+                keyColumn: "Id",
+                keyValue: 8);
+
+            migrationBuilder.DeleteData(
+                table: "Ingredients",
+                keyColumn: "Id",
+                keyValue: 9);
+
+            migrationBuilder.DeleteData(
+                table: "Ingredients",
+                keyColumn: "Id",
+                keyValue: 10);
 
             migrationBuilder.DeleteData(
                 table: "Recipes",
