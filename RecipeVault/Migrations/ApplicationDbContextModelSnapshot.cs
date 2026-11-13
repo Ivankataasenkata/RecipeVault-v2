@@ -42,6 +42,58 @@ namespace RecipeVault.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cuisines");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Spaghetti"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Eggs"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Bacon"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Parmesan"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Yogurt"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Cucumber"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Rice"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Chicken"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Soy sauce"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Garlic"
+                        });
                 });
 
             modelBuilder.Entity("RecipeVault.Models.Ingredient", b =>
@@ -109,6 +161,47 @@ namespace RecipeVault.Migrations
                     b.HasIndex("CuisineId");
 
                     b.ToTable("Recipes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2026, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CuisineId = 1,
+                            Description = "The Roman classic: silky egg sauce, crispy bacon and plenty of parmesan.",
+                            Difficulty = 1,
+                            ImageUrl = "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800",
+                            Instructions = "Boil the spaghetti in salted water.\nFry the bacon until crisp.\nWhisk eggs with grated parmesan.\nDrain pasta, mix with bacon, remove from heat and stir in the egg mixture.\nServe immediately with extra parmesan.",
+                            PrepTimeMinutes = 25,
+                            Servings = 4,
+                            Title = "Spaghetti Carbonara"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedOn = new DateTime(2026, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CuisineId = 2,
+                            Description = "Refreshing Bulgarian cold soup with yogurt, cucumber and garlic.",
+                            Difficulty = 0,
+                            ImageUrl = "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800",
+                            Instructions = "Dice the cucumber finely.\nWhisk the yogurt with cold water.\nAdd cucumber, crushed garlic, dill and walnuts.\nSalt to taste and chill before serving.",
+                            PrepTimeMinutes = 15,
+                            Servings = 4,
+                            Title = "Tarator"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedOn = new DateTime(2026, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CuisineId = 3,
+                            Description = "Quick wok-fried rice with chicken, garlic and soy sauce.",
+                            Difficulty = 0,
+                            ImageUrl = "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800",
+                            Instructions = "Cook the rice and let it cool.\nStir-fry diced chicken until golden.\nAdd garlic, then the rice.\nSeason with soy sauce and fry on high heat.\nFinish with scrambled egg stirred through.",
+                            PrepTimeMinutes = 30,
+                            Servings = 2,
+                            Title = "Chicken Fried Rice"
+                        });
                 });
 
             modelBuilder.Entity("RecipeVault.Models.RecipeIngredient", b =>
@@ -129,6 +222,74 @@ namespace RecipeVault.Migrations
                     b.HasIndex("IngredientId");
 
                     b.ToTable("RecipeIngredients");
+
+                    b.HasData(
+                        new
+                        {
+                            RecipeId = 1,
+                            IngredientId = 1,
+                            Quantity = "500 g"
+                        },
+                        new
+                        {
+                            RecipeId = 1,
+                            IngredientId = 2,
+                            Quantity = "3"
+                        },
+                        new
+                        {
+                            RecipeId = 1,
+                            IngredientId = 3,
+                            Quantity = "200 g"
+                        },
+                        new
+                        {
+                            RecipeId = 1,
+                            IngredientId = 4,
+                            Quantity = "100 g"
+                        },
+                        new
+                        {
+                            RecipeId = 2,
+                            IngredientId = 5,
+                            Quantity = "500 g"
+                        },
+                        new
+                        {
+                            RecipeId = 2,
+                            IngredientId = 6,
+                            Quantity = "1 large"
+                        },
+                        new
+                        {
+                            RecipeId = 2,
+                            IngredientId = 10,
+                            Quantity = "2 cloves"
+                        },
+                        new
+                        {
+                            RecipeId = 3,
+                            IngredientId = 7,
+                            Quantity = "300 g"
+                        },
+                        new
+                        {
+                            RecipeId = 3,
+                            IngredientId = 8,
+                            Quantity = "250 g"
+                        },
+                        new
+                        {
+                            RecipeId = 3,
+                            IngredientId = 9,
+                            Quantity = "3 tbsp"
+                        },
+                        new
+                        {
+                            RecipeId = 3,
+                            IngredientId = 10,
+                            Quantity = "2 cloves"
+                        });
                 });
 
             modelBuilder.Entity("RecipeVault.Models.Recipe", b =>
