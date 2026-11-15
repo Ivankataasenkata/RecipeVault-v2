@@ -23,5 +23,9 @@ namespace RecipeVault.ViewModels.Recipe
         public string CuisineName  { get; set; } = null!;
 
         public ICollection<string> Ingredients  { get; set; } = new List<string>();
+
+        public double AverageRating { get; set; }
+
+        public ICollection<ReviewViewModel> Reviews { get; set; } = new List<ReviewViewModel>();
     }
 }

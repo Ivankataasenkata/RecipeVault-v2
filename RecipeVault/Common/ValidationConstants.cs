@@ -34,7 +34,13 @@ namespace RecipeVault.Common
 
         public const int RecipeIngredientQuantityMinLength = 1;
 
-        public const int RecipeIngredientQuantityMaxLength = 30; 
+        public const int RecipeIngredientQuantityMaxLength = 30;
+
+        public const int ReviewAuthorNameMinLength = 2;
+        public const int ReviewAuthorNameMaxLength = 50;
+        public const int ReviewCommentMaxLength = 1000;
+        public const int ReviewRatingMin = 1;
+        public const int ReviewRatingMax = 5;
    
     }
 }

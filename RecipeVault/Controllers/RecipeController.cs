@@ -96,6 +96,27 @@ namespace RecipeVault.Controllers
             return View(model);
         }
 
+        // POST: /Recipe/AddReview - leave a review on a recipe's details page
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddReview(ReviewFormViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                // The form lives on the Details page; pass the errors back via TempData.
+                TempData["ReviewError"] = "Please fill in your name (2-50 characters) and pick a rating from 1 to 5.";
+                return RedirectToAction(nameof(Details), new { id = model.RecipeId });
+            }
+
+            bool success = await recipeService.AddReviewAsync(model);
+            if (!success)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction(nameof(Details), new { id = model.RecipeId });
+        }
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

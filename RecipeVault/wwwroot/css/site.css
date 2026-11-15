@@ -30,6 +30,45 @@ body {
   text-align: start;
 }
 
+/* ---------- Page background & navbar ---------- */
+
+body {
+  background-color: #f6f4ef;
+  background-image: radial-gradient(#e5e1d8 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.navbar-rv {
+  background: linear-gradient(90deg, #14532d, #166534);
+}
+
+.navbar-rv .navbar-brand,
+.navbar-rv .nav-link {
+  color: #ffffff !important;
+}
+
+.navbar-rv .nav-link:hover {
+  color: #bbf7d0 !important;
+}
+
+.footer {
+  background-color: #ffffff;
+}
+
+/* ---------- Stars & reviews ---------- */
+
+.stars {
+  color: #f59e0b;
+  letter-spacing: 1px;
+}
+
+.review-item {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
 /* ---------- Home hero ---------- */
 
 .hero {

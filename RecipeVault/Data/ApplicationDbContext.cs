@@ -14,6 +14,7 @@ namespace RecipeVault.Data
         public DbSet<Cuisine> Cuisines {get; set;} = null!;
         public DbSet<Ingredient> Ingredients {get; set;} = null!;
         public DbSet<RecipeIngredient> RecipeIngredients {get; set;} = null!;
+        public DbSet<Review> Reviews { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -144,6 +145,15 @@ namespace RecipeVault.Data
                 new RecipeIngredient { RecipeId = 5, IngredientId = 16, Quantity = "4 tbsp" },
                 new RecipeIngredient { RecipeId = 5, IngredientId = 9, Quantity = "3 tbsp" },
                 new RecipeIngredient { RecipeId = 5, IngredientId = 10, Quantity = "3 cloves" }
+            );
+
+            modelBuilder.Entity<Review>().HasData(
+                new Review { Id = 1, RecipeId = 1, AuthorName = "Maria", Rating = 5, Comment = "Tastes like Rome! The trick with taking it off the heat before adding eggs is golden.", CreatedOn = new DateTime(2026, 11, 6) },
+                new Review { Id = 2, RecipeId = 1, AuthorName = "Georgi", Rating = 4, Comment = "Great recipe, I added a bit more parmesan.", CreatedOn = new DateTime(2026, 11, 7) },
+                new Review { Id = 3, RecipeId = 2, AuthorName = "Elena", Rating = 5, Comment = "Just like my grandmother makes it. Perfect for summer.", CreatedOn = new DateTime(2026, 11, 7) },
+                new Review { Id = 4, RecipeId = 3, AuthorName = "Stefan", Rating = 4, Comment = "Quick and tasty weeknight dinner.", CreatedOn = new DateTime(2026, 11, 8) },
+                new Review { Id = 5, RecipeId = 4, AuthorName = "Anna", Rating = 5, Comment = "Took me an hour but absolutely worth the stirring.", CreatedOn = new DateTime(2026, 11, 9) },
+                new Review { Id = 6, RecipeId = 5, AuthorName = "Viktor", Rating = 3, Comment = "Delicious but very hard to get the skin right on the first try.", CreatedOn = new DateTime(2026, 11, 10) }
             );
         }
 

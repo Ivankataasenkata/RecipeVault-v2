@@ -21,5 +21,7 @@ namespace RecipeVault.Services.Interfaces
 
         Task<ICollection<CuisineDropdownViewModel>> GetCuisinesAsync();
 
+        Task<bool> AddReviewAsync(ReviewFormViewModel model);
+
     }
 }

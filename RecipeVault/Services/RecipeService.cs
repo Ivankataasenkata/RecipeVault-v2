@@ -26,7 +26,9 @@ namespace RecipeVault.Services
                     ImageUrl = r.ImageUrl,
                     PrepTimeMinutes = r.PrepTimeMinutes,
                     Difficulty  = r.Difficulty.ToString(),
-                    CuisineName  = r.Cuisine.Name
+                    CuisineName  = r.Cuisine.Name,
+                    AverageRating = r.Reviews.Any() ? r.Reviews.Average(rv => (double)rv.Rating) : 0,
+                    ReviewCount = r.Reviews.Count()
                 })
                 .ToListAsync();
         }
@@ -44,7 +46,9 @@ namespace RecipeVault.Services
                     ImageUrl = r.ImageUrl,
                     PrepTimeMinutes = r.PrepTimeMinutes,
                     Difficulty = r.Difficulty.ToString(),
-                    CuisineName = r.Cuisine.Name
+                    CuisineName = r.Cuisine.Name,
+                    AverageRating = r.Reviews.Any() ? r.Reviews.Average(rv => (double)rv.Rating) : 0,
+                    ReviewCount = r.Reviews.Count()
                 })
                 .ToListAsync();
         }
@@ -68,6 +72,17 @@ namespace RecipeVault.Services
                     CuisineName = r.Cuisine.Name,
                     Ingredients = r.RecipeIngredients
                         .Select(ri => ri.Quantity + " " + ri.Ingredient.Name)
+                        .ToList(),
+                    AverageRating = r.Reviews.Any() ? r.Reviews.Average(rv => (double)rv.Rating) : 0,
+                    Reviews = r.Reviews
+                        .OrderByDescending(rv => rv.CreatedOn)
+                        .Select(rv => new ReviewViewModel
+                        {
+                            AuthorName = rv.AuthorName,
+                            Rating = rv.Rating,
+                            Comment = rv.Comment,
+                            CreatedOn = rv.CreatedOn
+                        })
                         .ToList()
                 })
                 .FirstOrDefaultAsync();
@@ -158,6 +173,27 @@ namespace RecipeVault.Services
             }
 
             dbContext.Recipes.Remove(recipe);
+            await dbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> AddReviewAsync(ReviewFormViewModel model)
+        {
+            bool recipeExists = await dbContext.Recipes.AnyAsync(r => r.Id == model.RecipeId);
+            if (!recipeExists)
+            {
+                return false;
+            }
+
+            dbContext.Reviews.Add(new Review
+            {
+                RecipeId = model.RecipeId,
+                AuthorName = model.AuthorName,
+                Rating = model.Rating,
+                Comment = model.Comment,
+                CreatedOn = DateTime.UtcNow
+            });
+
             await dbContext.SaveChangesAsync();
             return true;
         }

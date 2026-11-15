@@ -23,6 +23,19 @@
     </div>
     <div class="card-body d-flex flex-column">
         <h5 class="card-title mb-2">@Model.Title</h5>
+        <p class="mb-1">
+            @if (Model.ReviewCount > 0)
+            {
+                var fullStars = (int)Math.Round(Model.AverageRating);
+                <span class="stars">@(new string('★', fullStars))@(new string('☆', 5 - fullStars))</span>
+                <span class="text-muted small">@Model.AverageRating.ToString("0.0") · @Model.ReviewCount review@(Model.ReviewCount == 1 ? "" : "s")</span>
+            }
+            else
+            {
+                <span class="stars">☆☆☆☆☆</span>
+                <span class="text-muted small">No reviews yet</span>
+            }
+        </p>
         <p class="card-text text-muted small mb-3">
             <span class="me-3">🌍 @Model.CuisineName</span>
             <span>⏱ @Model.PrepTimeMinutes min</span>

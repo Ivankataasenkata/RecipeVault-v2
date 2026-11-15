@@ -434,6 +434,95 @@ namespace RecipeVault.Migrations
                         });
                 });
 
+            modelBuilder.Entity("RecipeVault.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Comment")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("Reviews");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorName = "Maria",
+                            Comment = "Tastes like Rome! The trick with taking it off the heat before adding eggs is golden.",
+                            CreatedOn = new DateTime(2026, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Rating = 5,
+                            RecipeId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AuthorName = "Georgi",
+                            Comment = "Great recipe, I added a bit more parmesan.",
+                            CreatedOn = new DateTime(2026, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Rating = 4,
+                            RecipeId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AuthorName = "Elena",
+                            Comment = "Just like my grandmother makes it. Perfect for summer.",
+                            CreatedOn = new DateTime(2026, 11, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Rating = 5,
+                            RecipeId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AuthorName = "Stefan",
+                            Comment = "Quick and tasty weeknight dinner.",
+                            CreatedOn = new DateTime(2026, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Rating = 4,
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AuthorName = "Anna",
+                            Comment = "Took me an hour but absolutely worth the stirring.",
+                            CreatedOn = new DateTime(2026, 11, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Rating = 5,
+                            RecipeId = 4
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AuthorName = "Viktor",
+                            Comment = "Delicious but very hard to get the skin right on the first try.",
+                            CreatedOn = new DateTime(2026, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Rating = 3,
+                            RecipeId = 5
+                        });
+                });
+
             modelBuilder.Entity("RecipeVault.Models.Recipe", b =>
                 {
                     b.HasOne("RecipeVault.Models.Cuisine", "Cuisine")
@@ -464,6 +553,17 @@ namespace RecipeVault.Migrations
                     b.Navigation("Recipe");
                 });
 
+            modelBuilder.Entity("RecipeVault.Models.Review", b =>
+                {
+                    b.HasOne("RecipeVault.Models.Recipe", "Recipe")
+                        .WithMany("Reviews")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Recipe");
+                });
+
             modelBuilder.Entity("RecipeVault.Models.Cuisine", b =>
                 {
                     b.Navigation("Recipes");
@@ -477,6 +577,8 @@ namespace RecipeVault.Migrations
             modelBuilder.Entity("RecipeVault.Models.Recipe", b =>
                 {
                     b.Navigation("RecipeIngredients");
+
+                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }

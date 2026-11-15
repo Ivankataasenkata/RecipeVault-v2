@@ -38,5 +38,7 @@ namespace RecipeVault.Models
         public virtual Cuisine Cuisine { get; set; } = null!;
 
         public virtual ICollection<RecipeIngredient> RecipeIngredients { get; set; } = new HashSet<RecipeIngredient>();
+
+        public virtual ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
     }
 }

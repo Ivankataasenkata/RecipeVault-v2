@@ -44,3 +44,70 @@
         <a asp-action="Index" class="btn btn-outline-secondary">Back to all</a>
     </div>
 </div>
+
+<hr class="my-5" />
+
+<section class="row">
+    <div class="col-lg-7">
+        <h3 class="mb-1">Reviews</h3>
+        @if (Model.Reviews.Any())
+        {
+            var fullStars = (int)Math.Round(Model.AverageRating);
+            <p class="mb-4">
+                <span class="stars fs-5">@(new string('★', fullStars))@(new string('☆', 5 - fullStars))</span>
+                <span class="text-muted">@Model.AverageRating.ToString("0.0") out of 5 · @Model.Reviews.Count review@(Model.Reviews.Count == 1 ? "" : "s")</span>
+            </p>
+
+            foreach (var review in Model.Reviews)
+            {
+                <div class="review-item mb-3">
+                    <div class="d-flex justify-content-between">
+                        <strong>@review.AuthorName</strong>
+                        <span class="text-muted small">@review.CreatedOn.ToString("d MMM yyyy")</span>
+                    </div>
+                    <span class="stars">@(new string('★', review.Rating))@(new string('☆', 5 - review.Rating))</span>
+                    @if (!string.IsNullOrEmpty(review.Comment))
+                    {
+                        <p class="mb-0 mt-1">@review.Comment</p>
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted mb-4">No reviews yet — be the first to rate this recipe!</p>
+        }
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card p-3">
+            <h5>Leave a review</h5>
+            @if (TempData["ReviewError"] != null)
+            {
+                <div class="alert alert-danger py-2">@TempData["ReviewError"]</div>
+            }
+            <form asp-action="AddReview" method="post">
+                <input type="hidden" name="RecipeId" value="@Model.Id" />
+                <div class="mb-2">
+                    <label class="form-label" for="AuthorName">Your name</label>
+                    <input class="form-control" id="AuthorName" name="AuthorName" required minlength="2" maxlength="50" />
+                </div>
+                <div class="mb-2">
+                    <label class="form-label" for="Rating">Rating</label>
+                    <select class="form-select" id="Rating" name="Rating">
+                        <option value="5">★★★★★ — Excellent</option>
+                        <option value="4">★★★★☆ — Very good</option>
+                        <option value="3">★★★☆☆ — Average</option>
+                        <option value="2">★★☆☆☆ — Poor</option>
+                        <option value="1">★☆☆☆☆ — Terrible</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="Comment">Comment (optional)</label>
+                    <textarea class="form-control" id="Comment" name="Comment" rows="3" maxlength="1000"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Post review</button>
+            </form>
+        </div>
+    </div>
+</section>
